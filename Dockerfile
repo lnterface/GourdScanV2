@@ -8,7 +8,7 @@
 ############################################################
 
 
-FROM ubuntu:14.04
+FROM ubuntu:16.04
 
 #get all the environment
 RUN apt-get update
@@ -17,11 +17,10 @@ RUN pip install --upgrade pip
 RUN pip install tornado requests redis scapy
 RUN wget https://github.com/sqlmapproject/sqlmap/zipball/master
 RUN unzip master -d /root
-RUN rm master
 RUN mv /root/sqlmap* /root/sqlmap
 RUN wget https://github.com/ysrc/GourdScanV2/archive/github.zip
 RUN unzip github.zip -d /root
-RUN rm github.zip
+RUN rm -rf github.zip master
 RUN mv /root/GourdScanV2-github /root/gourdscan
 
 #install sshd service
